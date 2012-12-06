@@ -171,7 +171,7 @@
 %%%%%%%%
 
 \NeedsTeXFormat{LaTeX2e}
-\ProvidesClass{mitthesis}[1999/10/20]
+\ProvidesClass{nuthesis}[1999/10/20]
 
 \def\mystretch{1.5}		% Double spacing hack
 \DeclareOption{doublespace}{}	% This is default
@@ -464,27 +464,21 @@ reserved.\par\permission}}
 %% a macro to change the (expanded) argument to uppercase.
 \def\maketitle{\begin{titlepage}
 \large
-{\def\baselinestretch{1.2}\Large\bf \choosecase{\@title} \par}
+{\def\baselinestretch{1}\bf \choosecase{\@title} \par}
 \vspace*{\fill}
 \par
-{\Large  \choosecase{\@author}}
+{\bf\choosecase{\@author}}
 \vspace*{\fill}
 \par
 \@prevdegrees
-\par
-\choosecase{วิทยานิพนธ์เสนอบัณฑิตวิทยาลัย มหาวิทยาลัยนเรศวร เพื่อเป็นส่วนหนึ่งของการศึกษา}
-\par
-\choosecase{หลักสูตรปริญญา\@degree} 
+\choosecase{\bf วิทยานิพนธ์เสนอบัณฑิตวิทยาลัย มหาวิทยาลัยนเรศวร เพื่อเป็นส่วนหนึ่งของการศึกษา} \\
+\choosecase{\bf  หลักสูตรปริญญา\@degree} \\
 \if \@major
-\else
-	\par
-	\choosecase{สาขาวิชา\@major} 
+\else	
+	\choosecase{\bf  สาขาวิชา\@major} \\
 \fi
-
-\par
-\choosecase{\@degreemonth~\@degreeyear} 
-\par
-\choosecase{ลิขสิทธิ์เป็นของมหาวิทยาลัยนเรศวร} 
+\choosecase{\bf  \@degreemonth~\@degreeyear} \\
+\choosecase{\bf  ลิขสิทธิ์เป็นของมหาวิทยาลัยนเรศวร} \\
 \end{titlepage}}
 
 % this environment should probably be called abstract,
