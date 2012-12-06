@@ -231,11 +231,13 @@
 %	into 1in margin.
 %  Draft mode brings the header back down.
 
-\setlength{\oddsidemargin}{0.25in}	% 1.25in left margin 
-\setlength{\evensidemargin}{0.25in}	% 1.25in left margin (even pages)
-\setlength{\topmargin}{0.0in}		% 1in top margin
-\setlength{\textwidth}{6.0in}		% 6.0in text - 1.25in rt margin
-\setlength{\textheight}{9in}		% Body ht for 1in margins
+%\setlength{\oddsidemargin}{3.75cm}	% 1.25in left margin 
+%\setlength{\evensidemargin}{3.75cm}	% 1.25in left margin (even pages)
+\setlength{\marginparwidth}{3.75cm}
+\setlength{\topmargin}{0pt}		% 1in top margin
+\setlength{\textwidth}{14.75cm}		% 6.0in text - 1.25in rt margin
+\setlength{\textheight}{23.45cm}		% Body ht for 1in margins
+
 \addtolength{\topmargin}{-\headheight}	% No header, so compensate
 \addtolength{\topmargin}{-\headsep}	% for header height and separation
 
@@ -385,6 +387,8 @@
 \def\degree#1{\setbox0\hbox{#1}	 %for side effect of setting \@degreeword
   \gdef\@degree{#1}}
 
+\def\major#1{\gdef\@major{#1}}
+
 % \and is used inside the \degree argument to separate two degrees
 \def\and{\gdef\@degreeword{degrees} \par and \par}
 \def\@degreeword{degree}
@@ -468,11 +472,19 @@ reserved.\par\permission}}
 \par
 \@prevdegrees
 \par
-\choosecase{วิทยานิพนธ์เสนอบัณฑิตวิทยาลัย มหาวิทยาลัยนเรศวร เพื่อเป็นส่วนหนึ่งของการศึกษาหลักสูตรปริญญา} 
-\choosecase{\@degreeword} 
+\choosecase{วิทยานิพนธ์เสนอบัณฑิตวิทยาลัย มหาวิทยาลัยนเรศวร เพื่อเป็นส่วนหนึ่งของการศึกษา}
 \par
-\choosecase{\@degree}
+\choosecase{หลักสูตรปริญญา\@degree} 
+\if \@major
+\else
+	\par
+	\choosecase{สาขาวิชา\@major} 
+\fi
+
 \par
+\choosecase{\@degreemonth~\@degreeyear} 
+\par
+\choosecase{ลิขสิทธิ์เป็นของมหาวิทยาลัยนเรศวร} 
 \end{titlepage}}
 
 % this environment should probably be called abstract,
