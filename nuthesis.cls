@@ -1,58 +1,4 @@
-% $Log: mitthesis.cls,v $
-% Revision 1.9  2012/02/15 15:48:16  jdreed
-% Tweak the "permission" statement per the Libraries' specs
-% retrieved 15-Feb-2012
-%
-% Revision 1.8  2009/07/27 14:23:50  boojum
-% added changing draft mark
-%
-% Revision 1.6  2005/05/13 19:57:40  boojum
-% added leftblank option
-%
-% Revision 1.5  2002/04/18 14:10:08  boojum
-% changed doublespace into setspace for 2e compliance
-%
-% Revision 1.4  2001/02/08 18:57:13  boojum
-% turned two newpages into cleardoublepages
-%
-% Revision 1.3  2000/08/14 14:53:29  boojum
-% commented out footheight, which is relevant for drafthead
-%
-% Revision 1.2  1999/10/21 14:51:33  boojum
-% changed references to documentstyle to documentclass in comments
-%
-% Revision 1.1  1999/10/21 14:39:31  boojum
-% Initial revision
-%
-%Revision 1.7  1998/04/01  20:45:34  othomas
-%removed offending phrase ", and to grant others the right to do so" from copyright notice.
-%
-%Revision 1.6  96/06/26  15:07:29  othomas
-%safety checkin.
-%
-%Revision 1.5  93/06/07  15:38:50  starflt
-%Altered 'vi' option copyright wording to comply with new Institute
-%Archives requirements and MIT lawyers.
-%
-%Revision 1.4  92/08/19  16:51:06  lwvanels
-%Updated Course 6 title page for new permissions.
-%
-%Revision 1.3  92/04/23  10:16:15  epeisach
-%Fixed comment character in rcs file
-%
-%Revision 1.2  92/04/22  13:12:02  epeisach
-%Fixes for 1991 course 6 requirements
-%Phrase "and to grant others the right to do so" has been added to 
-%permission clause
-%Second copy of abstract is not counted as separate pages so numbering works
-%out
-%
-%Revision 1.1  90/05/04  11:45:53  lwvanels
-%Initial revision
-
-%
-% LaTeX format for theses at MIT
-% Based on "Specifications for Thesis Preparation" 
+% $Log: nuthesis.cls,v $
 
 % `vi' and `upcase' options by Krishna Sethuraman - krishna@athena.mit.edu
 % Margins and heading types by Peter Nuth  - nuth@ai.mit.edu
@@ -173,7 +119,7 @@
 \NeedsTeXFormat{LaTeX2e}
 \ProvidesClass{nuthesis}[1999/10/20]
 
-\def\mystretch{1.5}		% Double spacing hack
+%\def\mystretch{1.5}		% Double spacing hack
 \DeclareOption{doublespace}{}	% This is default
 				% So we do not read this style twice
 \DeclareOption{singlespace}{		% If he explicitly wants single spacing
@@ -208,9 +154,9 @@
 \usepackage{xunicode}
 
 \XeTeXlinebreaklocale “th_TH” % สำหรับตัดคำ
-\XeTeXlinebreakskip = 0pt plus 1pt %
-\renewcommand{\baselinestretch}{1.2} % ตั้งระยะห่างระหว่างบรรทัด
-\defaultfontfeatures{Scale=1.23}
+\XeTeXlinebreakskip = 0pt plus 1.9pt %
+\renewcommand{\baselinestretch}{1.45} % ตั้งระยะห่างระหว่างบรรทัด
+\defaultfontfeatures{Scale=1.42}
 
 \setmainfont[Script=Thai]{TH Sarabun New}
 
@@ -222,7 +168,7 @@
 % Read the doublespace style that we got from Rochester:
 %\input setdoublespace.sty 		
 
-\def\baselinestretch{\mystretch}	% Double spacing hack
+% \def\baselinestretch{\mystretch}	% Double spacing hack
 
 %%%%%%%  Set up margins and formatting params %%%
 
@@ -231,12 +177,13 @@
 %	into 1in margin.
 %  Draft mode brings the header back down.
 
-%\setlength{\oddsidemargin}{3.75cm}	% 1.25in left margin 
+%\setlength{\oddsidemargin}{1.5in}	% 1.25in left margin 
 %\setlength{\evensidemargin}{3.75cm}	% 1.25in left margin (even pages)
 \setlength{\marginparwidth}{3.75cm}
-\setlength{\topmargin}{0pt}		% 1in top margin
-\setlength{\textwidth}{14.75cm}		% 6.0in text - 1.25in rt margin
+\setlength{\topmargin}{0.25in}		% 1in top margin
+\setlength{\textwidth}{15.75cm}		% 6.0in text - 1.25in rt margin
 \setlength{\textheight}{23.45cm}		% Body ht for 1in margins
+\setlength\parindent{1.5cm}
 
 \addtolength{\topmargin}{-\headheight}	% No header, so compensate
 \addtolength{\topmargin}{-\headsep}	% for header height and separation
@@ -518,6 +465,18 @@ requirements for the \@degreeword\ of \\
   \parindent 0pt \parskip 10pt plus 1fil minus 1fil
   \def\baselinestretch{1}\@normalsize\vbox to \vsize\bgroup\vbox to 9in\bgroup}
 % The \kern0pt pushes any depth into the height.  Thanks to Richard Stone.
+
+
+
+\newenvironment{acknowledgement}{
+\cleardoublepage
+\begin{center}{\large{
+\bf ประกาศคุณูปการ}} 
+\par
+\end{center}
+}
+
+
 \def\endtitlepage{\par\kern 0pt\egroup\vss\egroup\newpage}
 
 \def\MIT{MASSACHUSETTS INSTITUTE OF TECHNOLOGY}
